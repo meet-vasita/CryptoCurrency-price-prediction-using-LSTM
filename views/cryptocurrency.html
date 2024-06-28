@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cryptocurrencies Live Prices</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ff0000, #000080);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 400px; /* Shortened container size */
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow-y: auto; /* Add scrolling option */
+      max-height: 70vh; /* Limit maximum height for scrolling */
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f9f9f9;
+    }
+
+    .crypto-name {
+      font-weight: bold;
+    }
+
+    .price-up {
+      color: green;
+    }
+
+    .price-down {
+      color: red;
+    }
+
+    .crypto-image {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cryptocurrencies Live Prices</h1>
+    <ul id="crypto-list">
+      <!-- Crypto prices will be dynamically added here -->
+    </ul>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Fetch live prices from the API
+      fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,dogecoin,ripple,litecoin,chainlink,cardano,polkadot,binancecoin,stellar&vs_currencies=usd')
+        .then(response => response.json())
+        .then(data => {
+          const cryptoList = document.getElementById('crypto-list');
+          // Add Bitcoin price
+          addCryptoPrice(cryptoList, 'Bitcoin (BTC)', data.bitcoin.usd, 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png');
+          // Add Ethereum price
+          addCryptoPrice(cryptoList, 'Ethereum (ETH)', data.ethereum.usd, 'https://assets.coingecko.com/coins/images/279/large/ethereum.png');
+          // Add Dogecoin price
+          addCryptoPrice(cryptoList, 'Dogecoin (DOGE)', data.dogecoin.usd, 'https://assets.coingecko.com/coins/images/5/large/dogecoin.png');
+          // Add Ripple price
+          addCryptoPrice(cryptoList, 'Ripple (XRP)', data.ripple.usd, 'https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png');
+          // Add Litecoin price
+          addCryptoPrice(cryptoList, 'Litecoin (LTC)', data.litecoin.usd, 'https://assets.coingecko.com/coins/images/2/large/litecoin.png');
+          // Add Chainlink price
+          addCryptoPrice(cryptoList, 'Chainlink (LINK)', data.chainlink.usd, 'https://assets.coingecko.com/coins/images/877/large/chainlink-new-logo.png');
+          // Add Cardano price
+          addCryptoPrice(cryptoList, 'Cardano (ADA)', data.cardano.usd, 'https://assets.coingecko.com/coins/images/975/large/cardano.png');
+          // Add Polkadot price
+          addCryptoPrice(cryptoList, 'Polkadot (DOT)', data.polkadot.usd, 'https://assets.coingecko.com/coins/images/12171/large/aJGBjJFU_400x400.jpg');
+          // Add Binance Coin price
+          addCryptoPrice(cryptoList, 'Binance Coin (BNB)', data.binancecoin.usd, 'https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png');
+          // Add Stellar price
+          addCryptoPrice(cryptoList, 'Stellar (XLM)', data.stellar.usd, 'https://assets.coingecko.com/coins/images/100/large/Stellar_symbol_black_RGB.png');
+          // Add more cryptocurrencies here
+        })
+        .catch(error => console.error('Error fetching data:', error));
+
+      // Function to add cryptocurrency price to the list
+      function addCryptoPrice(parent, name, price, imageUrl) {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+          <img src="${imageUrl}" alt="${name}" class="crypto-image">
+          <span class="crypto-name">${name}</span>
+          <span class="crypto-price">$${price}</span>
+        `;
+        // Determine if price is going up or down
+        if (Math.random() < 0.5) {
+          listItem.classList.add('price-up');
+        } else {
+          listItem.classList.add('price-down');
+        }
+        parent.appendChild(listItem);
+      }
+    });
+  </script>
+</body>
+</html>

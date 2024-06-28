@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(to bottom right, #ff0000, #000080);
+            /* Gradient background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            background-color: rgba(255, 255, 255, 0.7);
+            /* Semi-transparent white background */
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: black;
+            /* Corrected color value */
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ddd;
+        }
+
+        /* Styling for the developer names */
+        .developer-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .developer-list li {
+            margin: 0 10px;
+            font-weight: bold;
+            color: #fff;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: linear-gradient(to right, #ff0000, #000080);
+            /* Gradient from dark red to dark blue */
+            transition: background-color 0.3s ease;
+        }
+
+        .developer-list li:hover {
+            background: linear-gradient(to right, #8b0000, #00008b);
+            /* Gradient from darker red to darker blue on hover */
+            color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>About Us</h1>
+        <p>Welcome to our Cryptocurrency Price Prediction Application!</p>
+        <h3>Developed By</h3>
+
+        <ul class="developer-list">
+            <li>Meet Vasita</li>
+            <li>Mehraan Khan</li>
+            <li>Sanket Gaikwad</li>
+        </ul>
+    </div>
+</body>
+
+</html>

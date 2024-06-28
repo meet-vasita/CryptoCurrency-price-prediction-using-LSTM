@@ -1,0 +1,136 @@
+/* Styles for the body and container */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif; /* Adding a fallback font */
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh; /* Changed height to min-height */
+    background: linear-gradient(to right, #ff0000, #000080); /* Red to navy blue gradient */
+    color: #fff;
+    display: flex;
+    flex-direction: column; /* Aligning children vertically */
+    justify-content: space-between; /* Spacing content vertically */
+}
+
+
+/* Styles for the navigation */
+nav {
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distributing items evenly */
+    position: fixed; /* Fixed positioning */
+    width: 100%; /* Full width */
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.logo {
+    width: 50px;
+    cursor: pointer;
+    margin-left: 50px; /* Added margin */
+}
+
+nav ul {
+    list-style-type: none; /* Removing default list styles */
+    margin: 0;
+    padding: 0;
+    margin-right: 700px;
+    display: flex; /* Align links horizontally */
+}
+
+nav ul li {
+    margin: 0 15px; /* Adjusted spacing */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+nav ul li a:hover {
+    color: #ff960b; /* Change color on hover */
+}
+
+nav .btn {
+    color: #fff;
+    background-color: #ff960b;
+    text-decoration: none;
+    border: 1px solid #fff;
+    padding: 10px 30px;
+    border-radius: 20px;
+    margin-right: 30px;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+nav .btn:hover {
+    background-color: #fff; /* Change background color on hover */
+    color: #ff960b;
+}
+
+
+/* Styles for the content */
+.content {
+    text-align: center; /* Center aligning content */
+    padding: 120px 0 50px; /* Added padding */
+}
+
+.content h1 {
+    font-size: 4rem; /* Responsive font size */
+    margin-bottom: 20px;
+}
+
+.content h1 span {
+    color: #ff960b;
+}
+
+.content p {
+    font-size: 1.2rem; /* Responsive font size */
+    margin-bottom: 30px;
+}
+
+.content .btn {
+    background-color: #ff960b;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.content .btn:hover {
+    background-color: #fff; /* Change background color on hover */
+    color: #ff960b;
+}
+
+
+/* Styles for the coin list */
+.coin-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px; /* Added margin */
+}
+
+.coin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 1.2rem; /* Responsive font size */
+    margin: 0 15px;
+    color: #fff;
+}
+
+.coin img {
+    width: 100px; /* Adjusted size */
+    margin-bottom: 10px; /* Added margin */
+}
+
+.coin h3 {
+    margin: 0;
+}

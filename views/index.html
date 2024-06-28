@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cryptocurrency Price Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ff0000, #000080);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding-top: 60px; /* Add padding-top to prevent content from being obscured by the fixed navigation bar */
+    }
+
+    .container {
+      max-width: 400px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #000;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: #fff;
+      color: #000;
+    }
+
+    button[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .plot-container {
+      margin-top: 20px;
+    }
+
+    /* Navigation bar styles */
+    nav {
+      background-color: rgba(51, 51, 51, 0.8); /* Updated to a slightly transparent color */
+      overflow: hidden;
+      position: fixed; /* Position the navigation bar at the top of the screen */
+      top: 0; /* Position the navigation bar at the top */
+      width: 100%; /* Make the navigation bar span the entire width */
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav li {
+      float: left;
+      position: relative;
+    }
+
+    nav li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 20px 20px; /* Increase padding for larger navigation links */
+      text-decoration: none;
+      transition: background-color 0.3s; /* Add smooth transition for background color change */
+    }
+
+    nav li a:hover {
+      background-color: #ddd; /* Change background color on hover */
+      color: black;
+    }
+
+    /* Dropdown styles */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #333;
+      min-width: 160px;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation bar -->
+  <nav>
+    <ul>
+      <li><a href="/homepage">Home</a></li>
+      <li class="dropdown">
+        <a href="/cryptocurrency" class="dropbtn">Cryptocurrencies</a>
+        <div class="dropdown-content">
+          <a href="#">Bitcoin</a>
+          <a href="#">Ethereum</a>
+          <a href="#">Dogecoin</a>
+        </div>
+      </li>
+      <li><a href="/marketnews">Market News</a></li>
+      <li><a href="/liveprices">Live Prices</a></li>
+      <li><a href="/aboutus">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Cryptocurrency Price Prediction</h1>
+    <form method="post">
+      <div class="form-group">
+        <label for="stock_symbol">Select Cryptocurrency:</label>
+        <select id="stock_symbol" name="stock_symbol" required>
+          <option value="" disabled selected>Select cryptocurrency</option>
+          <option value="BTC-USD">Bitcoin USD (BTC)</option>
+          <option value="ETH-USD">Ethereum USD (ETH)</option>
+          <option value="DOGE-USD">DOGE USD (DOGE)</option>
+          <option value="BNB-USD">Binance Coin USD (BNB)</option>
+          <option value="DOT-USD">Polkadot USD(DOT)</option>
+          <option value="XRP-USD">XRP USD(XRP)</option>
+          <option value="ADA-USD">Cardano USD (ADA)</option>
+          <option value="SHIB-USD">Shiba Inu USD (SHIB)</option>
+          <option value="BTC-INR">Bitcoin INR(BTC)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="num_days">Number of Days to Predict(Maximum 15 Days):</label>
+        <input type="number" id="num_days" name="num_days" placeholder="Enter number of days" min="1" max="15" value="10" required pattern="\d+" title="Enter the number of days you want to predict">
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+    <div class="plot-container" id="plot-container"></div>
+  </div>
+</body>
+</html>
